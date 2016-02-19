@@ -1,0 +1,27 @@
+<h1 class="title">Study Hall</h1>
+
+<% if @lists.count == 0 %>
+  <br />
+  <%= image_tag("http://cdn.meme.am/instances/250x250/57771349.jpg") %>
+  <br />
+  <br />
+  <small>No one knows everything about it.. add a study list!</small>
+  <hr>
+<% else %>
+  <small>select a subject to study</small>
+
+  <% @lists.each do |list| %>
+    <div class="list_items_wrapper">
+      <h1 class="big_text">&#123;<%= link_to list.title, list %>&#125;</h1>
+      <small><%= pluralize(list.items.count, "thing") %> to study..</small><br />
+      <small class="buttons">
+        <%= link_to "edit", edit_list_path(list) %> |
+        <%= link_to "delete", list_path(list), method: :delete, data: { confirm: "Have you mastered all concepts within this list?  If so, congrats!  Engage destruction." } %>
+      </small>
+      <hr>
+    </div>
+  <% end %>
+<% end %>
+<br />
+<br />
+<%= link_to "New Subject", new_list_path, class: "pb40" %>

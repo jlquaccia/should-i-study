@@ -1,0 +1,19 @@
+<h1 class="title"><%= @list.title %></h1>
+
+<% if @items.count == 0 %>
+  <h3 class="fw100">Concepts that you need to master will appear here.. you should start listing some!</h3>
+<% else %>
+  <% @items.each do |item| %>
+    <div class="list_items_wrapper">
+      <div style="color: <%= white_to_red(item.days_since_creation) %>;" class="text-left">
+        <%= item.title %> <%= link_to "", list_item_path(@list, item), method: :delete, data: { confirm: "Have you mastered this concept?" }, class: "fa fa-times red" %>
+        <div><small>added <%= time_ago_in_words(item.created_at) %> ago</small></div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+<br />
+<%= render 'items/form' %>
+<br />
+<%= link_to "View All Lists", lists_path, class: "pb40" %>

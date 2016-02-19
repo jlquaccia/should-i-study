@@ -1,0 +1,9 @@
+<%= form_for [@list, @list.items.build] do |f| %>
+  <div class="margin_auto">
+    <div class="form-group">
+      <%= f.text_field :title, placeholder: "Enter concept (e.g. 'Recursion' or 'AJAX')", class: 'form-control', required: true, autofocus: true %>
+    </div>
+  </div>
+
+  <%= f.submit "Add concept", class: 'btn btn-default' %>
+<% end %>

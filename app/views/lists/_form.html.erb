@@ -1,0 +1,7 @@
+<%= form_for(@list) do |f| %>
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: "Enter subject name (e.g. Ruby, AJAX, Media Queries", autofocus: true, required: true, class: 'form-control' %>
+  </div>
+
+  <%= f.submit "Create Subject", class: 'btn btn-default' %>
+<% end %>
